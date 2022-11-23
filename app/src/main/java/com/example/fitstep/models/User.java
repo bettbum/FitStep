@@ -1,5 +1,10 @@
 package com.example.fitstep.models;
 
+import android.text.format.DateUtils;
+
+import java.lang.reflect.GenericArrayType;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class User {
@@ -7,9 +12,11 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private Activity listOfActivities;
-    private Food listOfFoods;
-    private BodyMesurement trackOfBodyMesurement;
+    private String urlProfilePicture;
+    private ArrayList<Activity> listOfActivities;
+    private ArrayList<Food> listOfFoods;
+    private ArrayList<BodyMesurement> trackBodyMesurements;
+
 
     public User(String name, String email, String password) {
         id = UUID.randomUUID().toString();
@@ -47,27 +54,64 @@ public class User {
         this.password = password;
     }
 
-    public Activity getListOfActivities() {
+    public String getUrlProfilePicture() {
+        return urlProfilePicture;
+    }
+
+    public void setUrlProfilePicture(String urlProfilePicture) {
+        this.urlProfilePicture = urlProfilePicture;
+    }
+
+    public ArrayList<Activity> getListOfActivities() {
         return listOfActivities;
     }
 
-    public void setListOfActivities(Activity listOfActivities) {
+    public void setListOfActivities(ArrayList<Activity> listOfActivities) {
         this.listOfActivities = listOfActivities;
     }
 
-    public Food getListOfFoods() {
+    public ArrayList<Food> getListOfFoods() {
         return listOfFoods;
     }
 
-    public void setListOfFoods(Food listOfFoods) {
+    public void setListOfFoods(ArrayList<Food> listOfFoods) {
         this.listOfFoods = listOfFoods;
     }
 
-    public BodyMesurement getTrackOfBodyMesurement() {
-        return trackOfBodyMesurement;
+    public ArrayList<BodyMesurement> getTrackBodyMesurements() {
+        return trackBodyMesurements;
     }
 
-    public void setTrackOfBodyMesurement(BodyMesurement trackOfBodyMesurement) {
-        this.trackOfBodyMesurement = trackOfBodyMesurement;
+    public void setTrackBodyMesurements(ArrayList<BodyMesurement> trackBodyMesurements) {
+        this.trackBodyMesurements = trackBodyMesurements;
+    }
+
+    public ArrayList<Activity> getListOfActivitiesForDate(Date date){
+        ArrayList<Activity> acts = new ArrayList<Activity>();
+        for(Activity act : listOfActivities){
+            if(date.equals(act.getDateDone())){
+                acts.add(act);
+            }
+        }
+        return acts;
+    }
+
+    public ArrayList<Food> getListOfFoodsConsumedAtDate(Date date){
+        ArrayList<Food> foods= new ArrayList<Food>();
+        for(Food food : listOfFoods){
+            if(date.equals(food.getDateConsumed())){
+                foods.add(food);
+            }
+        }
+        return foods;
+    }
+    public BodyMesurement getBodyMesurementAtDate(String date){
+        BodyMesurement bd = new BodyMesurement();
+        for(BodyMesurement mes : trackBodyMesurements){
+            if(mes.getInputDate().equals(date)){
+                bd = mes;
+            }
+        }
+        return bd;
     }
 }

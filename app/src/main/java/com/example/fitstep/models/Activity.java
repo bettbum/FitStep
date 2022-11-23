@@ -5,7 +5,16 @@ import java.util.Date;
 public class Activity {
     private String name;
     private double nbOfHoursDone;
-    private Date dateDone;
+
+    public String getDateDone() {
+        return dateDone;
+    }
+
+    public void setDateDone(String dateDone) {
+        this.dateDone = dateDone;
+    }
+
+    private String dateDone;
 
     public String getName() {
         return name;
@@ -23,15 +32,9 @@ public class Activity {
         this.nbOfHoursDone = nbOfHoursDone;
     }
 
-    public Date getDateDone() {
-        return dateDone;
-    }
 
-    public void setDateDone(Date dateDone) {
-        this.dateDone = dateDone;
-    }
 
-    public Activity(String name, double nbOfHoursDone, Date dateDone) {
+    public Activity(String name, double nbOfHoursDone, String dateDone) {
         this.name = name;
         this.nbOfHoursDone = nbOfHoursDone;
         this.dateDone = dateDone;

@@ -5,9 +5,9 @@ import java.util.Date;
 public class Food {
     private String name;
     private int quantityConsumed;
-    private Date dateConsumed;
+    private String dateConsumed;
 
-    public Food(String name, int quantityConsumed, Date dateConsumed) {
+    public Food(String name, int quantityConsumed, String dateConsumed) {
         this.name = name;
         this.quantityConsumed = quantityConsumed;
         this.dateConsumed = dateConsumed;
@@ -29,11 +29,11 @@ public class Food {
         this.quantityConsumed = quantityConsumed;
     }
 
-    public Date getDateConsumed() {
+    public String getDateConsumed() {
         return dateConsumed;
     }
 
-    public void setDateConsumed(Date dateConsumed) {
+    public void setDateConsumed(String dateConsumed) {
         this.dateConsumed = dateConsumed;
     }
 

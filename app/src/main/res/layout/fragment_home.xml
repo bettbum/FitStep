@@ -15,8 +15,129 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="aa"/>
+
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Summary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textColor="@color/buttonPressedColor"/>
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today: "
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:id="@+id/tvBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body Mass Index (BMI): "
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tvUserBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aaa"
+        app:layout_constraintLeft_toRightOf="@id/tvBMI"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvBMI"
+        android:layout_marginLeft="20dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvBmiClassification"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBMI"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/buttonPressedColor"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tvBmiClassification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are in the underweight range"
+            android:layout_gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvCaloryIntake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calory Intake: "
+        app:layout_constraintTop_toBottomOf="@id/cvBmiClassification"
+        app:layout_constraintStart_toStartOf="@id/tvBMI"
+        android:layout_marginTop="20dp"/>
+    <ProgressBar
+        android:id="@+id/prbCaloryIntake"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCaloryIntake"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="5dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/circle_progress_bar"
+        tools:progress="60"
+        android:rotation="-90" />
+        <TextView
+            android:id="@+id/tvProgressIntake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="60%"
+            app:layout_constraintBottom_toBottomOf="@id/prbCaloryIntake"
+            app:layout_constraintTop_toTopOf="@id/prbCaloryIntake"
+            app:layout_constraintLeft_toLeftOf="@id/prbCaloryIntake"
+            app:layout_constraintRight_toRightOf="@id/prbCaloryIntake"/>
+    <TextView
+        android:id="@+id/tvCaloryOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calory Intake: "
+        app:layout_constraintTop_toBottomOf="@id/prbCaloryIntake"
+        app:layout_constraintStart_toStartOf="@id/tvBMI"
+        android:layout_marginTop="20dp"/>
+    <ProgressBar
+        android:id="@+id/prbCaloryOutput"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCaloryOutput"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="5dp"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/circle_progress_bar"
+        tools:progress="60"
+        android:rotation="-90" />
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="60%"
+        app:layout_constraintBottom_toBottomOf="@id/prbCaloryOutput"
+        app:layout_constraintTop_toTopOf="@id/prbCaloryOutput"
+        app:layout_constraintLeft_toLeftOf="@id/prbCaloryOutput"
+        app:layout_constraintRight_toRightOf="@id/prbCaloryOutput"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

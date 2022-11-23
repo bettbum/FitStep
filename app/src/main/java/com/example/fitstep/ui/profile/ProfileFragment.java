@@ -14,16 +14,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.fitstep.R;
-import com.example.fitstep.databinding.FragmentSlideshowBinding;
 
 public class ProfileFragment extends Fragment {
 
-    private ProfileViewModel mViewModel;
+
 
     public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }
-    private FragmentSlideshowBinding binding;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -41,7 +40,6 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 
 }

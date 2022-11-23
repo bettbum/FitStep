@@ -5,14 +5,16 @@ import java.util.Date;
 public class BodyMesurement {
     private double Height;
     private double Weight;
-    private Date inputDate;
+    private String inputDate;
 
-    public BodyMesurement(double height, double weight, Date inputDate) {
+    public BodyMesurement(double height, double weight, String inputDate) {
         Height = height;
         Weight = weight;
         this.inputDate = inputDate;
     }
+    public BodyMesurement(){
 
+    }
     public double getHeight() {
         return Height;
     }
@@ -29,15 +31,16 @@ public class BodyMesurement {
         Weight = weight;
     }
 
-    public Date getInputDate() {
+    public double BMI(){
+        return Weight/(Height*Height);
+    }
+
+    public String getInputDate() {
         return inputDate;
     }
 
-    public void setInputDate(Date inputDate) {
+    public void setInputDate(String inputDate) {
         this.inputDate = inputDate;
-    }
-    public double BMI(){
-        return Weight/(Height*Height);
     }
 
     @Override
