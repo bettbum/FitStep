@@ -48,7 +48,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/btnSignUp"
         app:layout_constraintVertical_bias="0.2"
-        android:background="@drawable/button"
+        android:background="@drawable/button_selector"
         />
     <Button
         android:id="@+id/btnSignUp"
@@ -58,7 +58,7 @@
         app:layout_constraintLeft_toLeftOf="@id/btnLogin"
         app:layout_constraintBaseline_toBaselineOf="@id/btnLogin"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/button"
+        android:background="@drawable/button_selector"
 
         />
 

@@ -4,5 +4,8 @@
         android:drawable="@drawable/button_hovered"
         android:state_hovered="true">
     </item>
-
+    <item
+        android:drawable="@drawable/button_active"
+        android:state_hovered="false">
+    </item>
 </selector>
