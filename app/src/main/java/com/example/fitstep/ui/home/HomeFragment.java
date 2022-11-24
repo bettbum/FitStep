@@ -33,8 +33,8 @@ public class HomeFragment extends Fragment {
         String today = DateFormat.getDateInstance().format(Calendar.getInstance().getTime());
         tvDate.setText("Today: " + today );
 
-        TextView tvUserBmi = view.findViewById(R.id.tvUserBmi);
-        tvUserBmi.setText(String.valueOf(user.getBodyMesurementAtDate(today).BMI()));
+//        TextView tvUserBmi = view.findViewById(R.id.tvUserBmi);
+//        tvUserBmi.setText(String.valueOf(user.getBodyMesurementAtDate(today).BMI()));
 
         setProgressCaloryIntake(50);
         setProgressCaloryOutput(50);

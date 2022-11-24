@@ -17,8 +17,21 @@
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/nav_setgoal"
+        android:id="@+id/nav_set_goal"
         android:name="com.example.fitstep.ui.setgoal.SetGoalFragment"
         android:label="@string/menu_set_goal"
         tools:layout="@layout/fragment_set_goal" />
+    <fragment
+        android:id="@+id/nav_activity"
+        android:name="com.example.fitstep.ui.activity.ActivityFragment"
+        android:label="Activity Management"
+        tools:layout="@layout/fragment_activity" >
+
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_graphic_activity"-->
+<!--        android:name="com.example.fitstep.ui.activity.ActivityGraphicFragment"-->
+<!--        android:label="Activities graphical statistics"-->
+<!--        tools:layout="@layout/fragment_activity_graphic" >-->
+<!--    </fragment>-->
 </navigation>

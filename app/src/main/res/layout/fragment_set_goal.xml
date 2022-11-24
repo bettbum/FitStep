@@ -1,14 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.setgoal.SetGoalFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SET YOUR GOAL"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/buttonColor"
+        />
+    <TextView
+        android:id="@+id/tvBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BMI"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+
+        />
+
+    <EditText
+        android:id="@+id/edBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintLeft_toRightOf="@id/tvBMI"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvBMI"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/edit_text"/>
+    <TextView
+        android:id="@+id/tvCaloryIntake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calory Intake"
+        app:layout_constraintTop_toBottomOf="@id/tvBMI"
+        app:layout_constraintStart_toStartOf="@id/tvBMI"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/edCaloryIntake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvCaloryIntake"
+        app:layout_constraintStart_toStartOf="@id/edBmi" />
+    <TextView
+        android:id="@+id/tvCaloryOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calory Intake"
+        app:layout_constraintTop_toBottomOf="@id/tvCaloryIntake"
+        app:layout_constraintStart_toStartOf="@id/tvCaloryIntake"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/edCaloryOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvCaloryOutput"
+        app:layout_constraintStart_toStartOf="@id/edCaloryIntake" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="20dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
