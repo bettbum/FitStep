@@ -36,6 +36,7 @@ public class ActivityFragment extends Fragment {
                 ActivityGraphicFragment fragment = new ActivityGraphicFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.nav_host_fragment_content_main,fragment);
+                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
