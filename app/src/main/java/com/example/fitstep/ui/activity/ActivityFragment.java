@@ -40,6 +40,20 @@ public class ActivityFragment extends Fragment {
 
             }
         });
+        Button btnAdd = view.findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ModifyActivityFragment fragment = new ModifyActivityFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("mode","add");
+                fragment.setArguments(bundle);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment_content_main,fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
         return view;
     }
 
