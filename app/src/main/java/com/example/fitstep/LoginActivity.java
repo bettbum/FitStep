@@ -1,6 +1,7 @@
 package com.example.fitstep;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,7 +15,9 @@ import android.widget.Toast;
 
 import com.example.fitstep.models.Activity;
 import com.example.fitstep.models.GlobalData;
+import com.example.fitstep.models.Goal;
 import com.example.fitstep.models.User;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +31,7 @@ import java.util.HashMap;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     Button btnSignIn, btnSignUp;
     EditText edEmail, edPassword;
+    ArrayList<Activity> listOfActivities;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.w("firebase", "Listener was cancelled");
             }
         });
+
         edEmail = findViewById(R.id.username);
         edPassword = findViewById(R.id.password);
         //Dev test
@@ -95,8 +100,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(snapshot.child("urlProfilePicture")!=null){
                                 GlobalData.loggedUser.setUrlProfilePicture(snapshot.child("urlProfilePicture").getValue().toString());
                             }
+                            if(snapshot.child("listOfActivities").getValue() != null){
+                                listOfActivities = new ArrayList<Activity>();
+                                GlobalData.userDatabase.child(GlobalData.loggedUser.getEmail())
+                                        .child("listOfActivities")
+                                        .addChildEventListener(new ChildEventListener() {
+                                            @Override
+                                            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                                Activity act = snapshot.getValue(Activity.class);
+                                                listOfActivities.add(act);
+                                                GlobalData.loggedUser.setListOfActivities(listOfActivities);
+                                            }
+
+                                            @Override
+                                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                            }
+                            if(snapshot.child("goal").getValue()!=null){
+                                Goal goal = snapshot.child("goal").getValue(Goal.class);
+                                GlobalData.loggedUser.setGoal(goal);
+                            }
                             goToMainActivity();
                         }
+
                     }else{
                         errorMessageDisplay("Email invalid");
                     }
@@ -106,6 +149,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 }
             });
+
         }
     }
     @Override

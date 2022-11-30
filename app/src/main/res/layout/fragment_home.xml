@@ -15,7 +15,8 @@
         app:layout_constraintRight_toRightOf="parent"
         android:textStyle="bold"
         android:textSize="30dp"
-        android:textColor="@color/buttonPressedColor"/>
+        android:textColor="@color/buttonPressedColor"
+        />
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"

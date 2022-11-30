@@ -2,10 +2,16 @@ package com.example.fitstep.models;
 
 public class Goal {
     private double bmi;
-    private long energyIntake;
-    private long energyOuput;
+    private double energyIntake;
+    private double energyOuput;
 
     public Goal() {
+    }
+
+    public Goal(double bmi, double energyIntake, double energyOuput) {
+        this.bmi = bmi;
+        this.energyIntake = energyIntake;
+        this.energyOuput = energyOuput;
     }
 
     public double getBmi() {
@@ -16,7 +22,7 @@ public class Goal {
         this.bmi = bmi;
     }
 
-    public long getEnergyIntake() {
+    public double getEnergyIntake() {
         return energyIntake;
     }
 
@@ -24,7 +30,7 @@ public class Goal {
         this.energyIntake = energyIntake;
     }
 
-    public long getEnergyOuput() {
+    public double getEnergyOuput() {
         return energyOuput;
     }
 

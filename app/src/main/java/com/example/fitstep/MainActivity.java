@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_profile,
-                R.id.nav_home,R.id.nav_set_goal,R.id.nav_activity)
+                R.id.nav_home,R.id.nav_set_goal,R.id.nav_activity,R.id.nav_bmi)
                 .setOpenableLayout(drawer)
                 .build();
         navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {

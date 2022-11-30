@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -45,6 +46,23 @@ public class ActivityFragment extends Fragment {
         adapter = new ArrayAdapter<Activity>(view.getContext(), android.R.layout.simple_expandable_list_item_1, listOfActivities);
         lvActivities.setAdapter(adapter);
 
+        //List View Item On click hanfler
+        lvActivities.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Activity activity = listOfActivities.get(i);
+                ModifyActivityFragment fragment = new ModifyActivityFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("mode","edit");
+                bundle.putSerializable("activity",activity);
+                fragment.setArguments(bundle);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.nav_host_fragment_content_main,fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+            }
+        });
         GlobalData.userDatabase.child(GlobalData.loggedUser.getEmail())
                 .child("listOfActivities")
                 .addChildEventListener(new ChildEventListener() {

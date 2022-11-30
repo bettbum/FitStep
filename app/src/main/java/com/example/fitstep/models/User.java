@@ -17,7 +17,7 @@ public class User {
     private ArrayList<Activity> listOfActivities;
     private ArrayList<Food> listOfFoods;
     private ArrayList<BodyMesurement> trackBodyMesurements;
-
+    private Goal goal;
     public  User(){}
     public User(String name, String email, String password) {
         this.name = name;
@@ -29,6 +29,14 @@ public class User {
     @Override
     public String toString() {
         return email;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
     }
 
     public String getName() {
@@ -87,7 +95,7 @@ public class User {
         this.trackBodyMesurements = trackBodyMesurements;
     }
 
-    public ArrayList<Activity> getListOfActivitiesForDate(Date date){
+    public ArrayList<Activity> getListOfActivitiesForDate(String date){
         ArrayList<Activity> acts = new ArrayList<Activity>();
         for(Activity act : listOfActivities){
             if(date.equals(act.getDateDone())){
@@ -97,7 +105,7 @@ public class User {
         return acts;
     }
 
-    public ArrayList<Food> getListOfFoodsConsumedAtDate(Date date){
+    public ArrayList<Food> getListOfFoodsConsumedAtDate(String date){
         ArrayList<Food> foods= new ArrayList<Food>();
         for(Food food : listOfFoods){
             if(date.equals(food.getDateConsumed())){
@@ -114,5 +122,17 @@ public class User {
             }
         }
         return bd;
+    }
+    public int CaloriesBurntToday(ArrayList<Activity> activities){
+        int sum = 0;
+        for(Activity act : activities){
+            if(GlobalData.caloriesBurntByExercise.containsKey(act.getName())){
+                double hour = act.getNbOfHoursDone();
+                int caloryBurntPer30Mins = GlobalData.caloriesBurntByExercise.get(act.getName());
+                double caloryBurnt = hour*caloryBurntPer30Mins/0.5;
+                sum += caloryBurnt;
+            }
+        }
+        return sum;
     }
 }

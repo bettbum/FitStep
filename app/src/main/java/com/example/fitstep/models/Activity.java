@@ -1,10 +1,18 @@
 package com.example.fitstep.models;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class Activity {
+public class Activity implements Serializable {
     private String name;
     private double nbOfHoursDone;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
 
     public String getDateDone() {
         return dateDone;
@@ -35,6 +43,7 @@ public class Activity {
 
 
     public Activity(String name, double nbOfHoursDone, String dateDone) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.nbOfHoursDone = nbOfHoursDone;
         this.dateDone = dateDone;
