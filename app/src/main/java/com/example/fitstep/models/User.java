@@ -2,13 +2,14 @@ package com.example.fitstep.models;
 
 import android.text.format.DateUtils;
 
+import androidx.annotation.NonNull;
+
 import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 public class User {
-    private String id;
     private String name;
     private String email;
     private String password;
@@ -17,17 +18,17 @@ public class User {
     private ArrayList<Food> listOfFoods;
     private ArrayList<BodyMesurement> trackBodyMesurements;
 
-
+    public  User(){}
     public User(String name, String email, String password) {
-        id = UUID.randomUUID().toString();
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-
-    public String getId() {
-        return id;
+    @NonNull
+    @Override
+    public String toString() {
+        return email;
     }
 
     public String getName() {

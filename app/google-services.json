@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "705018932596",
+    "project_id": "fitstep-ab421",
+    "storage_bucket": "fitstep-ab421.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705018932596:android:bb001681a19f9bcadbd021",
+        "android_client_info": {
+          "package_name": "com.example.fitstep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705018932596-0cf6calv29mggj0qplopkme23ippvak1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqSctvDHPnVniihQxWp6vnmKKosHHt_P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705018932596-0cf6calv29mggj0qplopkme23ippvak1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

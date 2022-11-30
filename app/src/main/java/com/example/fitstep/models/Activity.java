@@ -39,6 +39,7 @@ public class Activity {
         this.nbOfHoursDone = nbOfHoursDone;
         this.dateDone = dateDone;
     }
+    public Activity(){}
 
     @Override
     public String toString() {

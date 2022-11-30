@@ -12,6 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fitstep.R;
+import com.example.fitstep.models.Activity;
+import com.example.fitstep.models.GlobalData;
+
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.UUID;
 
 
 public class ModifyActivityFragment extends Fragment {
@@ -29,6 +35,13 @@ public class ModifyActivityFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(edName.getText() != null && edHours.getText() != null){
+                    String name = edName.getText().toString();
+                    Double hours = Double.valueOf(edHours.getText().toString());
+                    String date = DateFormat.getDateInstance().format(Calendar.getInstance().getTime());
+                    Activity act = new Activity(name, hours, date);
+                    GlobalData.userDatabase.child(GlobalData.loggedUser.getEmail()).child("listOfActivities").child(UUID.randomUUID().toString()).setValue(act);
+                }
                 getFragmentManager().popBackStack();
             }
         });

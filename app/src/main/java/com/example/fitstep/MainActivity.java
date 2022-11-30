@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.fitstep.models.GlobalData;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -16,6 +19,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitstep.databinding.ActivityMainBinding;
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
         });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
+
+        //Set logged user information for header
+        View navHeaderView = navigationView.getHeaderView(0);
+        TextView tvName = navHeaderView.findViewById(R.id.tvName);
+        TextView tvEmail = navHeaderView.findViewById(R.id.tvEmail);
+        ImageView imgUser = navHeaderView.findViewById(R.id.imgUser);
+        if(GlobalData.loggedUser != null){
+            tvName.setText(GlobalData.loggedUser.getName());
+            tvEmail.setText(GlobalData.loggedUser.getEmail());
+            if(GlobalData.loggedUser.getUrlProfilePicture() != null){
+                Picasso.with(navHeaderView.getContext()).load(GlobalData.loggedUser.getUrlProfilePicture()).placeholder(R.drawable.rounding_image).into(imgUser);
+            }
+        }
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
