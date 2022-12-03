@@ -47,6 +47,7 @@ public class Activity implements Serializable {
         this.name = name;
         this.nbOfHoursDone = nbOfHoursDone;
         this.dateDone = dateDone;
+
     }
     public Activity(){}
 

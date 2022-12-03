@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         if(GlobalData.loggedUser != null){
             tvName.setText(GlobalData.loggedUser.getName());
             tvEmail.setText(GlobalData.loggedUser.getEmail());
-            if(GlobalData.loggedUser.getUrlProfilePicture() != null){
+            if(GlobalData.loggedUser.getUrlProfilePicture() != ""){
                 Picasso.with(navHeaderView.getContext()).load(GlobalData.loggedUser.getUrlProfilePicture()).placeholder(R.drawable.rounding_image).into(imgUser);
             }
         }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_profile,
-                R.id.nav_home,R.id.nav_set_goal,R.id.nav_activity,R.id.nav_bmi)
+                R.id.nav_home,R.id.nav_set_goal,R.id.nav_activity,R.id.nav_bmi,R.id.nav_recipe)
                 .setOpenableLayout(drawer)
                 .build();
         navigationView.getMenu().findItem(R.id.nav_logout).setOnMenuItemClickListener(menuItem -> {

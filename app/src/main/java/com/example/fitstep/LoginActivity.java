@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +15,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.fitstep.models.Activity;
+import com.example.fitstep.models.BodyMesurement;
 import com.example.fitstep.models.GlobalData;
 import com.example.fitstep.models.Goal;
+import com.example.fitstep.models.HttpRequest;
+import com.example.fitstep.models.Recipe;
 import com.example.fitstep.models.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button btnSignIn, btnSignUp;
     EditText edEmail, edPassword;
     ArrayList<Activity> listOfActivities;
+    ArrayList<BodyMesurement> listOfBmi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initialize() {
-
         DatabaseReference connectedRef = FirebaseDatabase.getInstance().getReference(".info/connected");
         connectedRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -95,12 +99,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(!password.equals(edPassword.getText().toString())){
                             errorMessageDisplay("Password invalid");
                         }else{
-                            String name = snapshot.child("name").toString();
+                            String name = snapshot.child("name").getValue().toString();
                             GlobalData.loggedUser = new User(name, email,password);
-                            if(snapshot.child("urlProfilePicture")!=null){
+                            if(snapshot.child("urlProfilePicture").exists()){
                                 GlobalData.loggedUser.setUrlProfilePicture(snapshot.child("urlProfilePicture").getValue().toString());
                             }
-                            if(snapshot.child("listOfActivities").getValue() != null){
+                            if(snapshot.child("listOfActivities").exists()){
                                 listOfActivities = new ArrayList<Activity>();
                                 GlobalData.userDatabase.child(GlobalData.loggedUser.getEmail())
                                         .child("listOfActivities")
@@ -136,6 +140,40 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(snapshot.child("goal").getValue()!=null){
                                 Goal goal = snapshot.child("goal").getValue(Goal.class);
                                 GlobalData.loggedUser.setGoal(goal);
+                            }
+                            if(snapshot.child("listOfBmi").getValue()!=null){
+                                listOfBmi = new ArrayList<BodyMesurement>();
+                                GlobalData.userDatabase.child(GlobalData.loggedUser.getEmail())
+                                        .child("listOfBmi")
+                                        .addChildEventListener(new ChildEventListener() {
+                                            @Override
+                                            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                                BodyMesurement bmi = snapshot.getValue(BodyMesurement.class);
+                                                listOfBmi.add(bmi);
+                                                GlobalData.loggedUser.setTrackBodyMesurements(listOfBmi);
+                                            }
+
+                                            @Override
+                                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
                             }
                             goToMainActivity();
                         }

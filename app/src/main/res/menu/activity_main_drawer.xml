@@ -6,27 +6,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_person_24"
             android:title="Profile"></item>
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_set_goal"
+            android:icon="@drawable/ic_baseline_flag_24"
             android:title="Goal Setting"></item>
         <item
             android:id="@+id/nav_activity"
+            android:icon="@drawable/ic_baseline_run_circle_24"
             android:title="Activity">
         </item>
         <item
+
             android:id="@+id/nav_bmi"
+            android:icon="@drawable/ic_baseline_man_3_24"
             android:title="BMI">
         </item>
         <item
+            android:id="@+id/nav_recipe"
+            android:icon="@drawable/ic_baseline_food_bank_24"
+            android:title="Recipe Search">
+        </item>
+        <item
             android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_arrow_back_24"
             android:title="Log Out">
         </item>
+
 
 
     </group>

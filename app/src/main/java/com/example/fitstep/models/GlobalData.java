@@ -12,6 +12,7 @@ public class GlobalData {
     public static User loggedUser;
     public static DatabaseReference userDatabase = FirebaseDatabase.getInstance().getReference("user");
     public static final Map<String, Integer> caloriesBurntByExercise = new HashMap<>();
+    public static final Map<Double, String> bmiClassification = new HashMap<>();
     static {
 
         //Calory Burnt By Exercise list
@@ -28,6 +29,12 @@ public class GlobalData {
         caloriesBurntByExercise.put("weightlifting",106);
         caloriesBurntByExercise.put("run",200);
         caloriesBurntByExercise.put("walk",106);
+
+        //Bmi classification
+        bmiClassification.put(18.5, "Underweight");
+        bmiClassification.put(24.9, "Normal Weight");
+        bmiClassification.put(29.9 , "Overweight");
+        bmiClassification.put(30.0, "Obesity");
 
 
 

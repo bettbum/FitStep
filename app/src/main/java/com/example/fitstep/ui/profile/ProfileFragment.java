@@ -75,7 +75,7 @@ public class ProfileFragment extends Fragment {
                 edEmail.setText(GlobalData.loggedUser.getEmail());
                 edPassword.setText(GlobalData.loggedUser.getPassword());
                 edRepeatedPassword.setText(GlobalData.loggedUser.getPassword());
-                if(GlobalData.loggedUser.getUrlProfilePicture() != null){
+                if(GlobalData.loggedUser.getUrlProfilePicture() != ""){
                     Picasso.with(view.getContext()).load(GlobalData.loggedUser.getUrlProfilePicture()).placeholder(R.drawable.rounding_image).into(imgUser);
                 }
             }

@@ -1,13 +1,16 @@
 package com.example.fitstep.models;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
-public class BodyMesurement {
+public class BodyMesurement implements Serializable {
     private double Height;
     private double Weight;
     private String inputDate;
-
+    private String id;
     public BodyMesurement(double height, double weight, String inputDate) {
+        this.id = UUID.randomUUID().toString();
         Height = height;
         Weight = weight;
         this.inputDate = inputDate;
@@ -15,6 +18,11 @@ public class BodyMesurement {
     public BodyMesurement(){
 
     }
+
+    public String getId() {
+        return id;
+    }
+
     public double getHeight() {
         return Height;
     }
@@ -32,7 +40,7 @@ public class BodyMesurement {
     }
 
     public double BMI(){
-        return Weight/(Height*Height);
+        return Math.round(Weight/(Height*Height)*10)/10;
     }
 
     public String getInputDate() {
@@ -45,10 +53,6 @@ public class BodyMesurement {
 
     @Override
     public String toString() {
-        return "BodyMesurement{" +
-                "Height=" + Height +
-                ", Weight=" + Weight +
-                ", inputDate=" + inputDate +
-                '}';
+        return String.valueOf(BMI());
     }
 }

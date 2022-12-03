@@ -35,6 +35,13 @@
         tools:layout="@layout/fragment_bmi" >
 
     </fragment>
+    <fragment
+        android:id="@+id/nav_recipe"
+        android:name="com.example.fitstep.ui.recipe.RecipeFragment"
+        android:label="BMI"
+        tools:layout="@layout/fragment_bmi" >
+
+    </fragment>
 <!--    <fragment-->
 <!--        android:id="@+id/nav_graphic_activity"-->
 <!--        android:name="com.example.fitstep.ui.activity.ActivityGraphicFragment"-->

@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.example.fitstep.R;
 import com.example.fitstep.models.Activity;
 import com.example.fitstep.models.GlobalData;
+import com.example.fitstep.models.adapter.ActivityAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +31,8 @@ import java.util.ArrayList;
 public class ActivityFragment extends Fragment {
     ListView lvActivities;
     ArrayList<Activity> listOfActivities;
-    ArrayAdapter<Activity> adapter;
+
+    ActivityAdapter adapter;
     public static ActivityFragment newInstance() {
         return new ActivityFragment();
     }
@@ -43,8 +45,9 @@ public class ActivityFragment extends Fragment {
 
         listOfActivities = new ArrayList<Activity>();
         lvActivities = view.findViewById(R.id.lvActivities);
-        adapter = new ArrayAdapter<Activity>(view.getContext(), android.R.layout.simple_expandable_list_item_1, listOfActivities);
+        adapter = new ActivityAdapter(view.getContext(), listOfActivities);
         lvActivities.setAdapter(adapter);
+
 
         //List View Item On click hanfler
         lvActivities.setOnItemClickListener(new AdapterView.OnItemClickListener() {

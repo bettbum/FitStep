@@ -23,6 +23,11 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.urlProfilePicture = "";
+        this.listOfActivities = new ArrayList<Activity>();
+        this.listOfFoods = new ArrayList<Food>();
+        this.trackBodyMesurements = new ArrayList<BodyMesurement>();
+        this.goal = new Goal();
     }
 
     @NonNull
